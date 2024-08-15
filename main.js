@@ -192,3 +192,123 @@ let books = {
 
 books.listAvailableBooks();
 books.listBorrowedBooks();
+
+
+let recipes = {
+    list: [
+        { 
+            title: "Pancakes", 
+            ingredients: ["Flour", "Eggs", "Milk"], 
+            instructions: "Mix and cook on a griddle." },
+        { 
+            title: "Salad", 
+            ingredients: ["Lettuce", "Tomatoes", "Cucumbers"], 
+            instructions: "Chop and toss with dressing." }
+      ],
+    addRecipe: function(recName, recIngs, recInstructs) {
+        this.list.push({
+            title: recName,
+            ingredients: recIngs,
+            instructions: recInstructs
+        });
+    },
+    updateInstructs: function(recName, recInstructs) {
+        for (let i = 0; i < this.list.length; i++) {
+            if (this.list[i].title == recName) {
+                this.list[i].instructions = recInstructs;
+            }
+        }
+    },
+    displayRecipes: function() {
+        for (let i = 0; i < this.list.length; i++) {
+            console.log(this.list[i]);
+        }
+    }
+};
+
+recipes.displayRecipes();
+recipes.addRecipe("Ramen", ["Noodles", "Broth", "Toppics"], "Boil noodles, heat broth, add noodles and broth to bowl, add toppings");
+recipes.updateInstructs("Pancakes", "Skip eggs, make vegan");
+recipes.displayRecipes();
+
+
+// I added a car ID section for more realistic searches on specific items for updates. In cases where multiples can exist but only one price should update.
+let cars = {
+    list: [
+        { 
+            make: "Toyota", 
+            model: "Camry", 
+            year: 2020, 
+            price: 24000,
+            ID: 763887},
+        { 
+            make: "Honda", 
+            model: "Civic", 
+            year: 2019, 
+            price: 22000,
+            ID: 567343}
+    ],
+    addCar: function(carMake, carModel, carYear, carPrice, carID) {
+        this.list.push({
+            make: carMake,
+            model: carModel,
+            year: carYear,
+            price: carPrice,
+            ID: carID
+        })
+    },
+    updatePrice: function(carID, newPrice) {
+        for (let i = 0; i < this.list.length; i++) {
+            if (this.list[i].ID == carID) {
+                this.list[i].price = newPrice;
+            };
+        };
+    },
+    displayCars: function() {
+        for (let i = 0; i < this.list.length; i++) {
+            console.log(this.list[i]);
+        };
+    }
+};
+
+cars.displayCars();
+cars.addCar("Honda", "Trail 125", 2024, 4000, 582646);
+cars.updatePrice(763887, 18000);
+cars.displayCars();
+
+
+let pets = {
+    list: [
+        {
+            petName: "Caroline",
+            petType: "cat",
+            petAge: 8
+        },
+        {
+            petName: "Chloe",
+            petType: "dog",
+            petAge: 12
+        },
+        {
+            petName: "Gunner",
+            petType: "dog",
+            petAge: 10
+        }
+    ],
+    addPet: function(petNameNew, petTypeNew, petAgeNew) {
+        this.list.push ({
+            petName: petNameNew,
+            petType: petTypeNew,
+            petAge: petAgeNew
+        })
+    },
+    showOffPets: function() {
+        for (let i = 0; i < this.list.length; i++) {
+            console.log(this.list[i]);
+        };
+    }
+};
+
+pets.showOffPets();
+pets.addPet("Dingo", "dog", 4);
+pets.showOffPets();
